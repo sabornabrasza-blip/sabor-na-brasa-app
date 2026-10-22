@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8b1e16">
+  <title>Sabor na Brasa</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8ef;
+      color: #29211d;
+    }
+    header {
+      background: #8b1e16;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+    main { max-width: 650px; margin: auto; padding: 18px; }
+    h2 { color: #8b1e16; }
+    .produto {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      margin: 12px 0;
+      box-shadow: 0 2px 8px #00000010;
+    }
+    .produto p { color: #65564e; }
+    .preco { font-weight: bold; color: #8b1e16; }
+    button {
+      background: #8b1e16;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0 14px;
+      border: 1px solid #d6c8bd;
+      border-radius: 8px;
+      font: inherit;
+    }
+    footer { text-align: center; padding: 25px; color: #65564e; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Sabor na Brasa</h1>
+    <p>Comida gostosa feita com carinho!</p>
+  </header>
+
+  <main>
+    <h2>🍽️ Nosso cardápio</h2>
+    <p>Confira nossas opções e faça seu pedido.</p>
+
+    <div class="produto">
+      <h3>🍗 Galinha caipira</h3>
+      <p>Uma deliciosa refeição para saborear.</p>
+      <p class="preco">Consulte o preço</p>
+      <button onclick="adicionar('Galinha caipira')">Adicionar ao pedido</button>
+    </div>
+
+    <div class="produto">
+      <h3>🥩 Carne de sol</h3>
+      <p>Sabor especial para sua refeição.</p>
+      <p class="preco">Consulte o preço</p>
+      <button onclick="adicionar('Carne de sol')">Adicionar ao pedido</button>
+    </div>
+
+    <div class="produto">
+      <h3>🍲 Feijoada</h3>
+      <p>Uma opção deliciosa para matar a fome.</p>
+      <p class="preco">Consulte o preço</p>
+      <button onclick="adicionar('Feijoada')">Adicionar ao pedido</button>
+    </div>
+
+    <div class="produto">
+      <h3>🥘 Panelada</h3>
+      <p>Uma opção tradicional e cheia de sabor.</p>
+      <p class="preco">Consulte o preço</p>
+      <button onclick="adicionar('Panelada')">Adicionar ao pedido</button>
+    </div>
+
+    <h2>🛵 Monte seu pedido</h2>
+    <div class="produto">
+      <label for="itens">Itens escolhidos</label>
+      <textarea id="itens" rows="4" placeholder="Seus itens aparecerão aqui"></textarea>
+
+      <label for="cliente">Seu nome</label>
+      <input id="cliente" placeholder="Digite seu nome">
+
+      <label for="endereco">Endereço para entrega</label>
+      <input id="endereco" placeholder="Rua, número e bairro">
+
+      <label for="observacao">Observações</label>
+      <textarea id="observacao" rows="2" placeholder="Ex.: sem cebola"></textarea>
+
+      <button onclick="enviarPedido()">Enviar pedido pelo WhatsApp</button>
+      <p id="aviso"></p>
+    </div>
+  </main>
+
+  <footer> Sabor na Brasa ❤️ </footer>
+
+  <script>
+    function adicionar(nome) {
+      const campo = document.getElementById('itens');
+      campo.value += (campo.value ? '\n' : '') + '1x ' + nome;
+    }
+
+    function enviarPedido() {
+      const itens = document.getElementById('itens').value.trim();
+      const cliente = document.getElementById('cliente').value.trim();
+      const endereco = document.getElementById('endereco').value.trim();
+      const observacao = document.getElementById('observacao').value.trim();
+
+      if (!itens || !cliente || !endereco) {
+        document.getElementById('aviso').textContent =
+          'Preencha os itens, seu nome e o endereço.';
+        return;
+      }
+
+      document.getElementById('aviso').textContent =
+        'O cardápio está funcionando, mas o WhatsApp do restaurante ainda precisa ser configurado.';
+    }
+  </script>
+</body>
+</html>
